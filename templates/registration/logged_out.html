@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}  
+    
+<div class="container sections-wrapper py-3">
+	<div class="row">
+		<div class="primary col-lg-8 col-12 mx-auto">    
+			<section class="blog section">
+				<div class="section-inner shadow-sm rounded">
+
+			    <header class="blog-post-header">
+				    <h1 class="title mb-2">Logged out!</h1>
+			    </header>
+			    
+				<p>
+                <a href="{% url 'login'%}">Click here to login again.</a>
+				</p>
+				
+				</div>
+			</section>
+
+    	</div><!--//main-wrapper-->
+	</div>
+    
+{% endblock content %} 

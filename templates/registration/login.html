@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% if form.errors %}
+    <p class="login-err">Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p class="login-err">Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p class="login-err">Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <div class="container sections-wrapper py-3">
+        <div class="row">
+            <div class="primary col-lg-4 col-12 mx-auto "> 
+                <section class="section">
+				    <div class="section-inner shadow-sm rounded ">
+                        <h3 class="card-title">Log in</h3>
+                            <form method="post" novalidate>
+                                <table class="border border-2">
+                                    <tr>
+                                    <td>{{ form.username.label_tag }}</td>
+                                    <td>{{ form.username }}</td>
+                                    </tr>
+                                    <tr>
+                                    <td>{{ form.password.label_tag }}</td>
+                                    <td>{{ form.password }}</td>
+                                    </tr>
+                                </table>
+                                <input type="submit" value="login">
+                                <input type="hidden" name="next" value="{{ next }}">
+                            </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+      </div>
+    </form>
+
+
+  {# Assumes you setup the password_reset view in your URLconf #}
+  {% comment %} <p><a href="{% url 'password_reset' %}">Lost password?</a></p> {% endcomment %}
+
+{% endblock %}

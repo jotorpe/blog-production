@@ -1,0 +1,27 @@
+//*************************** Theme Colours****************************/
+// Define theme colour scheme
+$color: #879ebc;
+$color-2: #879ebc;
+$btn-color: #879ebc;
+$btn-color-2: #479FC8;
+$text-color: #000000;
+$text-color-secondary: #666;
+$grey: #999;
+$divider: #e8e8e8;
+$lighter-grey: #ccc;
+$darker-grey: #666;
+$smoky-white: #f5f5f5;
+$background: #e8e8e8;
+$heart: #fb866a;
+
+$dm-background: rgb(45, 44, 41);
+$dm-text-color: rgba(256, 256, 256, 1);
+$dm-text-color-secondary: rgba(256, 256, 256, 1);
+
+
+//*************************** Theme Styles ****************************/
+// Import theme styles
+@import "mixins";
+@import "base";
+@import "dark-mode";
+@import "responsive";

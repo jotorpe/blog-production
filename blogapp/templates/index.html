@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load markdownify %}
+{% block content %}    
+    
+<div class="container sections-wrapper py-3">
+	<div class="row">
+		<div class="primary col-lg-8 col-12">    
+			<section class="projects section">
+				<div class="section-inner shadow-sm rounded">
+					<h2 class="heading">Latest Posts</h2>
+					<div class="content">
+							{% for PP in posts %}
+							<div class="item">
+									<h3 class="title"><a href="{% url 'post' PP.slug %}" >{{ PP.title }}</a></h3>
+									<p class="datepost">{{ PP.timestamp | date:"F d, Y" }}, {{ PP.author.user}}{% if PP.categories.all %}, {% for CC in PP.categories.all %} <a href="{% url 'post-categories' CC.slug %}">{{CC}}</a> {% endfor %} {% endif %}</p>
+									<div class="border border-2 shadow-sm rounded p-1 my-2 summaryL">
+											<p class="summary">{{ PP.content | markdownify | truncatewords:30}}</p>
+									</div>
+									<span><a class="more-link" href="{% url 'post' PP.slug %}" target="_blank"><i class="fas fa-external-link-alt"></i>Know more</a></span>
+							</div><!--//item-->
+							{% endfor %}
+					</div><!--//content-->  
+				</div><!--//section-inner-->                 
+			</section><!--//section-->
+		</div><!--//primary-->
+
+		<div class="secondary col-lg-4 col-12">
+			<aside class="info aside section">
+				<div class="section-inner shadow-sm rounded">
+					<h2 class="heading ">About me</h2>
+					<div class="content">
+					<p> I am a <strong>civil engineer</strong>. 
+							I used my background to do a PhD on biomedical engineering in the field of <strong>medical imaging</strong>. 
+							During all my way I have always been interested in creating algorithms and codes 
+							that would help me in my research tasks and other colleagues. 
+							<strong>Python</strong> has always been the first choice.
+					</p>
+					<p><a class="more-link" href="{% url 'about' %}" target="_blank"><i class="fas fa-external-link-alt"></i>More about me</a></p>
+					</div><!--//content-->  
+				</div><!--//section-inner-->                 
+			</aside><!--//aside-->
+		</div>
+			
+	</div><!--//row-->
+</div>
+    
+{% endblock content %}
+
+
